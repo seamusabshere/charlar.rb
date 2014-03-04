@@ -1,14 +1,16 @@
-require 'set'
+require 'fileutils'
 
-seen = Set.new
+require_relative 'lib/message'
+
+FileUtils.mkdir_p 'inbox'
 
 loop do
-  Dir["messages/*.txt"].reject do |path|
-    seen.include? path
-  end.each do |path|
-    seen << path
-    puts File.read(path)
-    puts "END OF MESSAGE"
+  Dir["inbox/*"].each do |path|
+    puts '='*50
+    puts path
+    puts '-'*50
+    puts Message.read(path)
+    puts
   end
   sleep 1
 end

@@ -1,4 +1,10 @@
+require 'fileutils'
+
+require_relative 'lib/message'
+
+FileUtils.mkdir_p 'inbox'
+
 while line = gets
-  File.open("messages/#{Time.now.to_f}.txt", 'w') { |f| f.write line }
+  Message.write "inbox/#{Time.now.to_f}.txt", line
   puts "SENT"
 end
