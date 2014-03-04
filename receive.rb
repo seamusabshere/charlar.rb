@@ -9,7 +9,7 @@ FileUtils.mkdir_p 'inbox'
 loop do
   Dir["inbox/*"].each do |path|
     puts '='*50
-    puts path
+    puts "READ #{path}"
     puts '-'*50
     puts Message.read(path)
     puts

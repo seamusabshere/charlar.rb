@@ -21,5 +21,5 @@ while line = $stdin.gets
   line.chomp!
   path = "inbox/#{Time.now.to_f}.#{extname}"
   Message.write path, line
-  puts "SENT #{path}"
+  puts "WROTE #{path}"
 end
