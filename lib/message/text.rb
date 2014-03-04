@@ -1,7 +1,7 @@
 module Message
   class Text
     def self.read(path)
-      File.read path
+      new(path).read
     end
 
     def self.write(path, content)
@@ -10,13 +10,17 @@ module Message
 
     attr_reader :path
     attr_reader :content
-    def initialize(path, content)
+    def initialize(path, content = nil)
       @path = path
       @content = content
     end
 
     def write
       File.open(path, 'w') { |f| f.write content }
+    end
+
+    def read
+      File.read path
     end
   end
 end
