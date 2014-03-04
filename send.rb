@@ -1,3 +1,5 @@
+require 'bundler/setup'
+
 require 'fileutils'
 
 require_relative 'lib/message'
@@ -5,6 +7,7 @@ require_relative 'lib/message'
 FileUtils.mkdir_p 'inbox'
 
 while line = gets
-  Message.write "inbox/#{Time.now.to_f}.txt", line
+  line.chomp!
+  Message.write "inbox/#{Time.now.to_f}.png", line
   puts "SENT"
 end
